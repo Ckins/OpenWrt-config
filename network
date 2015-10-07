@@ -1,0 +1,90 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd44:3ced:87c0::/48'
+
+config interface 'lan'
+	option ifname 'eth0.1'
+	option force_link '1'
+	option type 'bridge'
+	option proto 'static'
+	option ipaddr '192.168.1.1'
+	option netmask '255.255.255.0'
+#	option ip6assign '60'
+	option ip6addr '2001:250:3002:4430:1:4:315:1/112'
+
+config interface 'wan'
+	option ifname 'eth0.2'
+	option proto 'dhcp'
+	option macaddr '18:67:B0:34:95:9C'
+	option metric '10'
+
+config interface 'wan6'
+	option ifname '@wan'
+	option proto 'dhcpv6'
+
+config interface 'wan2'
+	option ifname 'eth0.3'
+	option proto 'dhcp'
+	option macaddr '94:de:80:a4:fb:0b'
+	option metric '20'
+
+config interface 'wan7'
+	option ifname '@wan2'
+	option proto 'dhcpv6'
+
+config interface 'wan3'
+        option ifname 'eth0.4'
+        option proto 'dhcp'
+        option macaddr '30:f9:ed:d8:a1:42'
+        option metric '30'
+
+config interface 'wan8'
+        option ifname '@wan3'
+        option proto 'dhcpv6'
+
+config interface 'wan4'
+        option ifname 'eth0.5'
+        option proto 'dhcp'
+		option macaddr 'f0:de:f1:6a:14:e4'
+        option metric '40'
+
+config interface 'wan9'
+        option ifname '@wan4'
+        option proto 'dhcpv6'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+	option ports '0t 5'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+	option ports '0t 1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+	option ports '0t 2'
+
+config switch_vlan
+        option device 'switch0'
+        option vlan '4'
+        option ports '0t 3'
+
+config switch_vlan
+        option device 'switch0'
+        option vlan '5'
+        option ports '0t 4'
+
